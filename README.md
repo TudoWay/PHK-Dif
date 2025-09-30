@@ -25,6 +25,12 @@ training  on CIFAR10:
 python -m torch.distributed.run --standalone --nproc_per_node=4  train.py --outdir=train-runs/ --data=datasets/cifar10-32x32.zip --cond=False --arch=ddpmpp --batch=288 --precond=diff --lr=2e-4 --Shift=0.60 --Scale=0.39 --sigmoid_start=10 --sigmoid_end=-13 --sigmoid_power=1 --lossType='PHK' --eta=10000
 ```
 
+## Model Checkpoints
+Model checkpoints can be downloaded from
+```bash
+https://huggingface.co/Tudo123/PHK/tree/main/checkpoint_PHK288
+```
+
 ## FID Evaluation
 
 Note that the numerical value of FID varies across different random seeds and is highly sensitive to the number of images. By default, fid.py will always use 50,000 generated images; providing fewer images will result in an error, whereas providing more will use a random subset. To reduce the effect of random variation, we recommend repeating the calculation multiple times with different seeds, e.g., --seeds=0-49999, --seeds=50000-99999, and --seeds=100000-149999. 
